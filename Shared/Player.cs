@@ -5,31 +5,37 @@ using System.Text;
 public class Player
 {
     public bool active;
-    public string playerName;
-    public int currentPosition;
+    public string Name;
+    public int CurrentPosition;
 
-    public Player(string playerName)
+    public Player(string PlayerName)
     {
-        this.playerName = playerName;
+        this.Name = PlayerName;
         this.active = true;
-        this.currentPosition = 0;
+        this.CurrentPosition = 0;
     }
 }
 public class Players_T
 {
-    static int activePlayerIndex = 0;
-    public int activePlayerCount = 0;
-    public Player currentPlayer;
+    static int ActivePlayerIndex = 0;
+    public int ActivePlayerCount = 0;
+    public Player CurrentPlayer;
     public List<Player> PlayerList = new List<Player>();
-    public Players_T()
+    public void GetPlayers()
     {
         int numPlayers = 0;
-        while (numPlayers < 2)
+        do
         {
             Console.WriteLine("How many players? (Min 2)");
             string sPlayers = Console.ReadLine();
-            numPlayers = Convert.ToInt32(sPlayers);
-        }
+            if (int.TryParse(sPlayers, out numPlayers))
+            {
+                if (numPlayers < 2)
+                {
+                    Console.WriteLine("Please ener a number greater than 1");
+                }
+            }
+        } while (numPlayers < 2);
 
         for (int i = 0; i < numPlayers; i++)
         {
@@ -40,7 +46,7 @@ public class Players_T
         }
     }
 
-    public int countActivePlayers()
+    public int CountActivePlayers()
     {
         int activePlayers = 0;
         for(int i = 0; i < PlayerList.Count; i++)
@@ -56,27 +62,27 @@ public class Players_T
     public void AddPlayer(Player newPlayer)
     {
         PlayerList.Add(newPlayer);
-        if (currentPlayer is null)
+        if (CurrentPlayer is null)
         {
-            currentPlayer = PlayerList[0];
+            CurrentPlayer = PlayerList[0];
         }
-        activePlayerCount++;
+        ActivePlayerCount++;
     }
     public void GetNextPlayer()
     {
         //Increment to the next player
         while (true)
         {
-            activePlayerIndex++;
+            ActivePlayerIndex++;
 
             //Does this player exist?
-            if (activePlayerIndex >= PlayerList.Count)
-                activePlayerIndex = 0;
+            if (ActivePlayerIndex >= PlayerList.Count)
+                ActivePlayerIndex = 0;
 
-            if (PlayerList[activePlayerIndex].active)
+            if (PlayerList[ActivePlayerIndex].active)
                 break;
         }
         //Is this player still active
-        currentPlayer = PlayerList[activePlayerIndex];
+        CurrentPlayer = PlayerList[ActivePlayerIndex];
     }
 }

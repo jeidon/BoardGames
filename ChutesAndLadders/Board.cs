@@ -68,7 +68,7 @@ namespace ChutesAndLadders
 
         public void Move(Player thisPlayer, int roll)
         {
-            int newPosition = thisPlayer.currentPosition;
+            int newPosition = thisPlayer.CurrentPosition;
             newPosition += roll;
 
             //Does it overshoot
@@ -90,19 +90,19 @@ namespace ChutesAndLadders
                 {
                     Console.WriteLine("and landed on {0} which lifted them to tile {1} of {2}", newPosition, Tiles[newPosition].targetTile, Tiles.Count);
                 }
-                thisPlayer.currentPosition = Tiles[newPosition].targetTile;
+                thisPlayer.CurrentPosition = Tiles[newPosition].targetTile;
             }
             else
             {
                 //Just a normal tile
                 Console.WriteLine("and moved to tile {0} of {1}", newPosition, Tiles.Count);
-                thisPlayer.currentPosition = newPosition;
+                thisPlayer.CurrentPosition = newPosition;
             }
 
             //Does this roll win?
-            if (thisPlayer.currentPosition == Tiles.Count)
+            if (thisPlayer.CurrentPosition == Tiles.Count)
             {
-                Console.WriteLine("{0} makes it to the top and goes out!", thisPlayer.playerName);
+                Console.WriteLine("{0} makes it to the top and goes out!", thisPlayer.Name);
                 thisPlayer.active = false;
             }
 

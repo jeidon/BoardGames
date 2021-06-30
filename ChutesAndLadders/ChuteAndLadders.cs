@@ -21,14 +21,14 @@ namespace ChutesAndLadders
         private static bool GameLoop()
         {
             Console.WriteLine("--------------------");
-            Console.WriteLine("It is {0}'s turn, Press Enter to Draw", Players.currentPlayer.playerName);
+            Console.WriteLine("It is {0}'s turn, Press Enter to Draw", Players.CurrentPlayer.Name);
             Console.ReadLine();
 
             int roll = Die.Roll(1, 6);
-            Console.WriteLine("{0} rolled a {1}", Players.currentPlayer.playerName, roll);
+            Console.WriteLine("{0} rolled a {1}", Players.CurrentPlayer.Name, roll);
 
-            Board.Move(Players.currentPlayer, roll);
-            if(Players.countActivePlayers() > 1)
+            Board.Move(Players.CurrentPlayer, roll);
+            if(Players.CountActivePlayers() > 1)
             {
                 Players.GetNextPlayer();
                 return false;
