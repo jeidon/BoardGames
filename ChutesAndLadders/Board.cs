@@ -58,6 +58,7 @@ namespace ChutesAndLadders
             Tiles[16].targetTile = 6;
             Tiles[48].targetTile = 26;
             Tiles[49].targetTile = 11;
+            Tiles[56].targetTile = 53;
             Tiles[62].targetTile = 19;
             Tiles[64].targetTile = 60;
             Tiles[87].targetTile = 24;
